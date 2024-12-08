@@ -82,39 +82,48 @@ const Quiz = () => {
 
     return (
         <section className='min-h-screen w-full bg-gradient-to-b from-[#F5E8C7] to-[#FAF5EF] flex flex-col pt-16 px-6'>
+            {/* PROGRESS BAR */}
             <div className='w-full h-2 bg-gray-300 mb-6'>
-                {/* PROGRESS BAR */}
                 <div
-                    className='h-full bg-[#8B4513]'
+                    className='h-full bg-[#8B4513] rounded-full'
                     style={{ width: `${((currentPage + 1) / questions.length) * 100}%` }}
                 />
             </div>
+
             <h3 className='text-center font-extrabold text-4xl text-[#602F18] mb-4'>
                 Question {currentPage + 1} of {questions.length}
             </h3>
-            <div className='w-full flex justify-center items-center  h-[5%]'>
-                <img src={hourglass} alt="" className='h-12 mr-4 animate-pulse' />
-                <p className='text-2xl font-extrabold text-red-600 text-center'>Time left : {timer}</p>
+
+            {/* TIMER */}
+            <div className='w-full flex justify-center items-center h-[5%] mb-8'>
+                <img src={hourglass} alt="" className='h-16 mr-4 animate-pulse' />
+                <p className='text-2xl font-extrabold text-red-600 text-center'>
+                    Time left: <span className='text-4xl'>{timer}</span>
+                </p>
             </div>
+
             {questions.length > 0 && (
                 <div className='flex flex-col items-center'>
                     <h3 className='text-2xl font-bold text-gray-800 text-center mb-8'>
                         {questions[currentPage].question}
                     </h3>
-                    <ul className='grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-2xl'>
-                        {([...questions[currentPage].incorrect_answers, questions[currentPage].correct_answer]
-                            .map((answer,index) => (
-                                <li onClick={() => handlePickedAns(answer)}
-                                    className={`rounded-xl p-4 text-center text-xl font-bold text-white  transition cursor-pointer ${answer === selectedAnswer[currentPage] ? 'bg-blue-600' : " bg-orange-400"}`}
+                    <ul className='grid grid-cols-1 sm:grid-cols-2 gap-6 w-full max-w-2xl'>
+                        {([...questions[currentPage].incorrect_answers, questions[currentPage].correct_answer])
+                            .map((answer, index) => (
+                                <li
+                                    onClick={() => handlePickedAns(answer)}
+                                    className={`rounded-xl p-4 text-center text-xl font-bold text-white transition-all cursor-pointer 
+                                    ${answer === selectedAnswer[currentPage] ? 'bg-blue-600' : "bg-orange-400"} 
+                                    hover:bg-blue-600 hover:scale-105`}
                                     key={`${index}-${answer}`}
                                 >
                                     {answer}
                                 </li>
-                            )))}
+                            ))}
                     </ul>
                 </div>
             )}
-            <div className='flex justify-center items-center mt-8 mb-[55%]'>
+                <div className='flex justify-center items-center mt-8 mb-[55%]'>
 
                 <button
                     onClick={() => {

@@ -12,7 +12,7 @@ const QuizResults = () => {
   const noOfWrong = 10 - (score);
 
    useEffect(()=>{
-    localStorage.setItem("score",JSON.stringify(newScore));
+    localStorage.setItem("score",score);
    },[score])
   return (
     <section className='h-[100vh] w-full flex flex-col bg-[#FFF8DC] pt-[15%]'>
@@ -22,7 +22,7 @@ const QuizResults = () => {
         <h2 className='font-bold text-4xl text-center'>Good Job</h2>
         
       </div>
-      <div className='h-[40%] flex flex-col justify-center items-center '>
+      <div className='h-[40%] flex flex-col justify-center items-center mb-4'>
         <div className='h-56 w-56 rounded-full bg-[#E98640]'>
           <img src={trophy2} alt="" className='z-10 '/>
         </div>
