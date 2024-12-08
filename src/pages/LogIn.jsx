@@ -23,7 +23,7 @@ const LogIn = () => {
           <Link to="/student/dashboard">
           <button
             type='submit'
-            className='bg-[#8B4513] text-white py-3 rounded-lg text-lg font-bold hover:bg-[#FFBA27] transition-all duration-300'
+            className='bg-[#8B4513] w-full text-white py-3 rounded-lg text-lg font-bold hover:bg-[#FFBA27] transition-all duration-300'
           >
             Log In
           </button>
